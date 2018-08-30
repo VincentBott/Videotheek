@@ -5,14 +5,15 @@ import java.util.ArrayList;
 public class Film {
     private String filmNaam;
     private int uitgaveJaar;
-    private ArrayList<String> acteurs;
+    private String regisseur;
     private double prijs;
 
 
-    public Film(String filmNaam, int uitgaveJaar, ArrayList<String> acteurs) {
+    public Film(String filmNaam, int uitgaveJaar, String regisseur, double prijs) {
 this.filmNaam = filmNaam;
 this.uitgaveJaar = uitgaveJaar;
-this.acteurs = acteurs;
+this.regisseur = regisseur;
+this.prijs = prijs;
     }
 
     public String getFilmNaam() {
@@ -23,8 +24,8 @@ this.acteurs = acteurs;
         return uitgaveJaar;
     }
 
-    public ArrayList<String> getActeurs() {
-        return acteurs;
+    public String getRegisseur() {
+        return regisseur;
     }
 
     public double getPrijs() {

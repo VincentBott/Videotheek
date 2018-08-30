@@ -1,5 +1,6 @@
 package org.betavzw;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
@@ -7,20 +8,18 @@ public class Main {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
         System.out.println("Welkom in de kleinste videotheek ter wereld !");
-        hoofdMenu();
-
-    }
-    public static int hoofdMenu(){
+        Menu hoofdM = new Menu("hoofdmenu", new String[]{"Filmselectie", "Audioselectie", "Account", "Stoppen"});
         int keuze;
-        Scanner input = new Scanner(System.in);
-        do {
-            System.out.println("--HOOFDMENU--");
-            String[] possibilities = new String[5];
-                for (int i = 1; i < possibilities.length+1; i++) {
-                    System.out.printf("%d. %n", i);
-            }
-            keuze = Integer.parseInt(input.nextLine());
-        } while (keuze < 1 || keuze > 5);
-return keuze;
+        keuze = hoofdM.menuUitvoeren();
+        if (keuze < 4) {
+            String[] de2eNiveau = hoofdM.tweedeNiveau(keuze);
+            Menu videoM = new Menu("filmselectie", de2eNiveau);
+            videoM.menuUitvoeren();
+            ArrayList<Film> films = videoM.videoadder(keuze);
+            videoM.menuUitvoeren();
+        }
     }
 }
+
+
+
